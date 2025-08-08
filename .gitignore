@@ -1,0 +1,8 @@
+node_modules/
+session-cookies.json
+session-localStorage.json
+saved-items.json
+*.log
+.env
+results/*.json
+ai-reports/*.md

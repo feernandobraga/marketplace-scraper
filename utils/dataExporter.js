@@ -24,6 +24,24 @@ export function exportToJson(data, filename = 'scraped-data') {
     return fullPath;
 }
 
+export function exportToMarkdown(data, filename = 'markdown-data') {
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const markdownDir = 'ai-reports';
+    const fullFilename = `${filename}-${timestamp}.md`;
+    const fullPath = `${markdownDir}/${fullFilename}`;
+
+    // Create results directory if it doesn't exist
+    if (!fs.existsSync(markdownDir)) {
+        fs.mkdirSync(markdownDir, { recursive: true });
+        console.log(`📁 Created ai-reports directory: ${markdownDir}`);
+    }
+
+    // Write data to file
+    fs.writeFileSync(fullPath, data);
+
+    return fullPath;
+}
+
 /**
  * Displays a summary of scraped items
  * @param {Array} items - Array of scraped items
